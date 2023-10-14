@@ -186,6 +186,9 @@ public class MainActivity extends AppCompatActivity {
                                     imagview[i].setImageResource(lista.get(i));
 
                                 }
+                                Log.i("log","cambio");
+
+
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {
