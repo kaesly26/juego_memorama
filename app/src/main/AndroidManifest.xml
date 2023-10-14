@@ -12,14 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Buscar_parejas_juego"
         tools:targetApi="31">
-        <activity android:exported="false"
-            android:name="nivel_dificil" />
         <activity
-            android:name="nivel_normal"
-            android:exported="false" />
-        <activity
-            android:name="nivelfacil"
-            android:exported="false" />
+            android:name=".NivelFacil"
+            android:exported="true">
+        </activity>
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

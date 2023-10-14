@@ -98,6 +98,9 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         dialog.dismiss();
+                        startActivity(new Intent(MainActivity.this, NivelFacil.class)
+                                .putExtra("nameplayer1",nameplayer1).putExtra("nameplayer2",nameplayer2));
+                        /*
                         setContentView(R.layout.nivelfacil);
 
                         player1 = (TextView) findViewById(R.id.player1);
@@ -207,7 +210,7 @@ public class MainActivity extends AppCompatActivity {
 
                             }
                         });
-
+                    */
                     }
 
                 });
@@ -458,64 +461,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private List<Integer> validar(ImageView[] imagview, List<Integer> lista, int pos, TextView inputPlayer1, TextView inputPlayer2) {
 
-        if (!cartas) {
-            carta_1 = imagview[pos];
-            imgcarta1 = lista.get(pos);
-            cartas = true;
-        } else {
-            carta_2 = imagview[pos];
-            imgcarta2 = lista.get(pos);
-            cartas = false;
-            boolean igual = (imgcarta1 == imgcarta2);
-            if (!igual) {
-                new Handler().postDelayed(() -> {
-                    animarcartas(carta_1, android.R.color.transparent);
-                    animarcartas(carta_2, android.R.color.transparent);
-                }, 1000);
-                if (tur == 1) {
-                    jugador.setText(inputPlayer2.getText());
-                    tur = 2;
-                    //restar puntos//
-                    int puntosActuales = Integer.parseInt(puntos1.getText().toString());
-                    if (puntosActuales != 0) {
-                        puntosActuales = puntosActuales - 50;
-                        puntos1.setText(puntosActuales + "");
-                    }
-
-                } else if (tur == 2) {
-                    jugador.setText(inputPlayer1.getText());
-                    tur = 1;
-                    int puntosActuales = Integer.parseInt(puntos2.getText().toString());
-                    if (puntosActuales != 0) {
-                        puntosActuales = puntosActuales - 50;
-                        puntos2.setText(puntosActuales + "");
-                    }
-
-                }
-            } else {
-                // sumar puntos
-                if (tur == 1) {
-                    int puntosActuales = Integer.parseInt(puntos1.getText().toString());
-                    puntosActuales = puntosActuales + 100;
-                    puntos1.setText(puntosActuales + "");
-                    Log.e("test", puntosActuales + " puntos 1");
-                } else if (tur == 2) {
-                    int puntosActuales = Integer.parseInt(puntos2.getText().toString());
-                    puntosActuales = puntosActuales + 100;
-                    puntos2.setText(puntosActuales + "");
-                    Log.e("test", puntosActuales + " puntos 2");
-
-                }
-                carta_1.setEnabled(false);
-                carta_2.setEnabled(false);
-
-
-            }
-        }
-        return lista;
-    }
 
     private List<Integer> validarnivel2(ImageView[] level2, List<Integer> lista, int pos, TextView inputPlayer1, TextView inputPlayer2) {
 
@@ -668,27 +614,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private List<Integer> aleatorio() {
 
-        int imgs[] = {R.drawable.ponyo, R.drawable.papaponyo, R.drawable.bigwoman, R.drawable.saske};
-        ArrayList<Integer> lista = new ArrayList<Integer>();
-        while (lista.size() < 8) {
-            int imgAleatoria = imgs[(int) (Math.random() * 4)];
-            int cont = 0;
-            for (int i = 0; i < lista.size(); i++) {
-                if (cont >= 2) {
-                    break;
-                }
-                if (lista.get(i) == imgAleatoria) {
-                    cont++;
-                }
-            }
-            if (cont < 2) {
-                lista.add(imgAleatoria);
-            }
-        }
-        return lista;
-    }
 
     private List<Integer> nivel2() {
 
