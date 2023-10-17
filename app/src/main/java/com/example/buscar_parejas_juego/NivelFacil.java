@@ -20,12 +20,7 @@ import java.util.List;
 
 public class NivelFacil extends AppCompatActivity {
 
-    int turno;
     boolean cartas = false;
-    Button jugar;
-    Button facil;
-    Button normal;
-    Button dificil;
     TextView jugador;
     ImageButton regresar;
     Button reiniciar;

@@ -18,7 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NivelNormal extends AppCompatActivity {
+public class NivelDificil extends AppCompatActivity {
+
     boolean cartas = false;
     TextView jugador;
     ImageButton regresar;
@@ -35,6 +36,10 @@ public class NivelNormal extends AppCompatActivity {
     ImageView carta10;
     ImageView carta11;
     ImageView carta12;
+    ImageView carta13;
+    ImageView carta14;
+    ImageView carta15;
+    ImageView carta16;
     int imgcarta1 = 0;
     int imgcarta2 = 0;
     ImageView carta_1;
@@ -46,77 +51,87 @@ public class NivelNormal extends AppCompatActivity {
     // contadores de puntos
     TextView puntos1;
     TextView puntos2;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nivel_normal);
+        setContentView(R.layout.activity_nivel_dificil);
 
-        player1 = (TextView) findViewById(R.id.namejugador1);
-        player2 = (TextView) findViewById(R.id.namejugador2);
+        player1 = (TextView) findViewById(R.id.play1);
+        player2 = (TextView) findViewById(R.id.play2);
 
-        jugador = (TextView) findViewById(R.id.iDturno);
-        regresar = (ImageButton) findViewById(R.id.salirBtn);
-        reiniciar = (Button) findViewById(R.id.Btnreiniciar);
-        carta1 = (ImageView) findViewById(R.id.ncarta1);
-        carta2 = (ImageView) findViewById(R.id.ncarta2);
-        carta3 = (ImageView) findViewById(R.id.ncarta3);
-        carta4 = (ImageView) findViewById(R.id.ncarta4);
-        carta5 = (ImageView) findViewById(R.id.ncarta5);
-        carta6 = (ImageView) findViewById(R.id.ncarta6);
-        carta7 = (ImageView) findViewById(R.id.ncarta7);
-        carta8 = (ImageView) findViewById(R.id.ncarta8);
-        carta9 = (ImageView) findViewById(R.id.ncarta9);
-        carta10 = (ImageView) findViewById(R.id.ncarta10);
-        carta11 = (ImageView) findViewById(R.id.ncarta11);
-        carta12 = (ImageView) findViewById(R.id.ncarta12);
+        jugador = (TextView) findViewById(R.id.turnoid);
+        regresar = (ImageButton) findViewById(R.id.iDsalir);
+        reiniciar = (Button) findViewById(R.id.reiniciar);
+        carta1 = (ImageView) findViewById(R.id.c1);
+        carta2 = (ImageView) findViewById(R.id.c2);
+        carta3 = (ImageView) findViewById(R.id.c3);
+        carta4 = (ImageView) findViewById(R.id.c4);
+        carta5 = (ImageView) findViewById(R.id.c5);
+        carta6 = (ImageView) findViewById(R.id.c6);
+        carta7 = (ImageView) findViewById(R.id.c7);
+        carta8 = (ImageView) findViewById(R.id.c8);
+        carta9 = (ImageView) findViewById(R.id.c9);
+        carta10 = (ImageView) findViewById(R.id.c10);
+        carta11 = (ImageView) findViewById(R.id.c11);
+        carta12 = (ImageView) findViewById(R.id.c12);
+        carta13 = (ImageView) findViewById(R.id.c13);
+        carta14 = (ImageView) findViewById(R.id.c14);
+        carta15 = (ImageView) findViewById(R.id.c15);
+        carta16 = (ImageView) findViewById(R.id.c16);
 
-        puntos1 = (TextView) findViewById(R.id.puntuacion1);
-        puntos2 = (TextView) findViewById(R.id.puntuacion2);
+        puntos1 = (TextView) findViewById(R.id.punto1);
+        puntos2 = (TextView) findViewById(R.id.punto2);
 
-        String nameplayer1= getIntent().getStringExtra("nameplayer1");
-        String nameplayer2= getIntent().getStringExtra("nameplayer2");
+        // Recibir valores de MainActivity
+        String nameplayer1 = getIntent().getStringExtra("nameplayer1");
+        String nameplayer2 = getIntent().getStringExtra("nameplayer2");
 
-        ImageView level2[] = {carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8, carta9, carta10, carta11, carta12};
+
+        ImageView level3[] = {carta1, carta2, carta3, carta4,
+                carta5, carta6, carta7, carta8,
+                carta9, carta10, carta11, carta12,
+                carta13, carta14, carta15, carta16};
 
         player1.setText(nameplayer1);
         player2.setText(nameplayer2);
 
         tur = (int) (Math.random() * 2) + 1;
-
         if (tur == 1) {
             jugador.setText(nameplayer1);
-
         } else if (tur == 2) {
             jugador.setText(nameplayer2);
+        }
+        List<Integer> lista = nivel3();
 
+        for (int i = 0; i < level3.length; i++) {
+            level3[i].setImageResource(lista.get(i));
         }
 
-        List<Integer> lista = nivel2();
-        for (int i = 0; i < level2.length; i++) {
-            level2[i].setImageResource(lista.get(i));
-
-        }
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < level2.length; i++) {
-                    level2[i].setImageResource(android.R.color.transparent);
+                for (int i = 0; i < level3.length; i++) {
+                    level3[i].setImageResource(android.R.color.transparent);
                 }
             }
         }, 1000);
 
 
-        for (int i = 0; i < level2.length; i++) {
+        for (int i = 0; i < level3.length; i++) {
             final int pos = i;
 
             //validar movimientos//
-            level2[i].setOnClickListener(new View.OnClickListener() {
+            level3[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    animarcartas(level2[pos], lista.get(pos));
-                    validarnivel2(level2, lista, pos, nameplayer1, nameplayer2);
+                    animarcartas(level3[pos], lista.get(pos));
+                    validarnivel3(level3, lista, pos, nameplayer1, nameplayer2);
 
                 }
+
+
             });
 
         }
@@ -124,17 +139,18 @@ public class NivelNormal extends AppCompatActivity {
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(NivelNormal.this, MainActivity.class));
+                startActivity(new Intent(NivelDificil.this, MainActivity.class));
 
             }
         });
         reiniciar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                startActivity(new Intent(NivelNormal.this, NivelNormal.class).putExtra("nameplayer1",nameplayer1).putExtra("nameplayer2",nameplayer2));
-                NivelNormal.this.finish();
+            public void onClick(View v) {
+                startActivity(new Intent(NivelDificil.this, NivelDificil.class).putExtra("nameplayer1",nameplayer1).putExtra("nameplayer2",nameplayer2));
+                NivelDificil.this.finish();
             }
         });
+
     }
     private void animarcartas(ImageView img, int image) {
         ViewPropertyAnimator animator = img.animate().withLayer().rotationY(90).setDuration(50);
@@ -151,15 +167,13 @@ public class NivelNormal extends AppCompatActivity {
 
     }
 
-
-
-    private List<Integer> nivel2() {
-
-        int imags[] = {R.drawable.mei, R.drawable.espantapajaros, R.drawable.totoro,
-                R.drawable.howl, R.drawable.cositablanca, R.drawable.cositaazul};
-        List<Integer> lista = new ArrayList<Integer>();
-        while (lista.size() < 12) {
-            int imgAleatoria = imags[(int) (Math.random() * 6)];
+    private List<Integer> nivel3() {
+        int img[] = {R.drawable.arriety, R.drawable.princesa, R.drawable.chico,
+                R.drawable.kiki, R.drawable.haru, R.drawable.marnie,
+                R.drawable.castillo, R.drawable.nausicaa};
+        ArrayList<Integer> lista = new ArrayList<Integer>();
+        while (lista.size() < 16) {
+            int imgAleatoria = img[(int) (Math.random() * 8)];
             int cont = 0;
             for (int i = 0; i < lista.size(); i++) {
                 if (cont >= 2) {
@@ -175,14 +189,14 @@ public class NivelNormal extends AppCompatActivity {
         }
         return lista;
     }
-    private List<Integer> validarnivel2(ImageView[] level2, List<Integer> lista, int pos, String inputPlayer1, String inputPlayer2) {
-
+    private List<Integer> validarnivel3(ImageView[] level3, List<Integer> lista, int pos, String inputPlayer1, String inputPlayer2) {
+        //validar//
         if (!cartas) {
-            carta_1 = level2[pos];
+            carta_1 = level3[pos];
             imgcarta1 = lista.get(pos);
             cartas = true;
         } else {
-            carta_2 = level2[pos];
+            carta_2 = level3[pos];
             imgcarta2 = lista.get(pos);
             cartas = false;
             boolean igual = (imgcarta1 == imgcarta2);
@@ -192,7 +206,7 @@ public class NivelNormal extends AppCompatActivity {
                     animarcartas(carta_2, android.R.color.transparent);
                 }, 1000);
                 if (tur == 1) {
-                    jugador.setText(inputPlayer2);
+                    jugador.setText(inputPlayer1);
                     tur = 2;
                     //restar puntos//
                     int puntosActuales = Integer.parseInt(puntos1.getText().toString());
@@ -202,7 +216,7 @@ public class NivelNormal extends AppCompatActivity {
                     }
 
                 } else if (tur == 2) {
-                    jugador.setText(inputPlayer1);
+                    jugador.setText(inputPlayer2);
                     tur = 1;
                     int puntosActuales = Integer.parseInt(puntos2.getText().toString());
                     if (puntosActuales != 0) {
@@ -231,7 +245,10 @@ public class NivelNormal extends AppCompatActivity {
 
             }
         }
+
         return lista;
     }
+
+
 
 }

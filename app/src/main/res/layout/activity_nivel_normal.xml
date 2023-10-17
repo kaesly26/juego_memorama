@@ -10,14 +10,14 @@
   <ImageView
       android:id="@+id/fondo2"
       android:layout_width="560dp"
-      android:layout_height="770dp"
+      android:layout_height="775dp"
       android:src="@drawable/fondo2"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
-      app:layout_constraintHorizontal_bias="0.503"
+      app:layout_constraintHorizontal_bias="0.697"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent"
-      app:layout_constraintVertical_bias="0.051" />
+      app:layout_constraintVertical_bias="0.068" />
 
   <ImageView
       android:id="@+id/imageView2"
@@ -34,7 +34,7 @@
       android:id="@+id/textView3"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="40dp"
+      android:layout_marginTop="45dp"
       android:fontFamily="sans-serif-smallcaps"
       android:text="nivel: normal"
       android:textColor="@color/white"
@@ -78,7 +78,7 @@
       android:layout_width="68dp"
       android:layout_height="26dp"
       android:layout_marginStart="80dp"
-      android:layout_marginTop="104dp"
+      android:layout_marginTop="106dp"
       android:fontFamily="sans-serif-smallcaps"
       android:textColor="@color/white"
       android:textSize="16sp"
@@ -91,7 +91,7 @@
       android:id="@+id/namejugador2"
       android:layout_width="64dp"
       android:layout_height="23dp"
-      android:layout_marginTop="104dp"
+      android:layout_marginTop="106dp"
       android:fontFamily="sans-serif-smallcaps"
       android:textColor="@color/white"
       android:textSize="16sp"
@@ -107,7 +107,7 @@
       android:layout_width="56dp"
       android:layout_height="54dp"
       android:layout_marginStart="64dp"
-      android:layout_marginBottom="132dp"
+      android:layout_marginBottom="130dp"
       android:backgroundTint="#187C1C"
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintStart_toStartOf="parent"
@@ -118,7 +118,7 @@
       android:layout_width="67dp"
       android:layout_height="63dp"
       android:layout_marginTop="248dp"
-      android:layout_marginEnd="40dp"
+      android:layout_marginEnd="24dp"
       android:background="#187C1C"
       app:layout_constraintEnd_toStartOf="@+id/ncarta3"
       app:layout_constraintTop_toTopOf="parent" />
@@ -127,11 +127,12 @@
       android:id="@+id/ncarta1"
       android:layout_width="67dp"
       android:layout_height="63dp"
+      android:layout_marginStart="28dp"
       android:layout_marginTop="248dp"
       android:layout_marginEnd="24dp"
       android:background="#187C1C"
       app:layout_constraintEnd_toStartOf="@+id/ncarta2"
-      app:layout_constraintHorizontal_bias="1.0"
+      app:layout_constraintHorizontal_bias="0.357"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toTopOf="parent" />
 
@@ -163,9 +164,10 @@
       android:layout_height="63dp"
       android:layout_marginStart="28dp"
       android:layout_marginTop="28dp"
+      android:layout_marginEnd="24dp"
       android:background="#187C1C"
       app:layout_constraintEnd_toStartOf="@+id/ncarta6"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintHorizontal_bias="0.357"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/ncarta1" />
 
@@ -174,7 +176,7 @@
       android:layout_width="67dp"
       android:layout_height="63dp"
       android:layout_marginTop="28dp"
-      android:layout_marginEnd="32dp"
+      android:layout_marginEnd="24dp"
       android:background="#187C1C"
       app:layout_constraintEnd_toStartOf="@+id/ncarta7"
       app:layout_constraintTop_toBottomOf="@+id/ncarta2" />
@@ -184,7 +186,7 @@
       android:layout_width="67dp"
       android:layout_height="63dp"
       android:layout_marginTop="28dp"
-      android:layout_marginEnd="124dp"
+      android:layout_marginEnd="120dp"
       android:background="#187C1C"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/ncarta3" />
@@ -205,10 +207,11 @@
       android:layout_width="67dp"
       android:layout_height="63dp"
       android:layout_marginStart="28dp"
-      android:layout_marginTop="36dp"
+      android:layout_marginTop="28dp"
+      android:layout_marginEnd="24dp"
       android:background="#187C1C"
       app:layout_constraintEnd_toStartOf="@+id/ncarta10"
-      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintHorizontal_bias="0.454"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintTop_toBottomOf="@+id/ncarta5" />
 
@@ -217,7 +220,7 @@
       android:layout_width="67dp"
       android:layout_height="63dp"
       android:layout_marginTop="28dp"
-      android:layout_marginEnd="32dp"
+      android:layout_marginEnd="24dp"
       android:background="#187C1C"
       app:layout_constraintEnd_toStartOf="@+id/ncarta11"
       app:layout_constraintTop_toBottomOf="@+id/ncarta6" />
@@ -244,9 +247,9 @@
 
   <Button
       android:id="@+id/Btnreiniciar"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginBottom="132dp"
+      android:layout_width="110dp"
+      android:layout_height="54dp"
+      android:layout_marginBottom="130dp"
       android:backgroundTint="#187C1C"
       android:fontFamily="sans-serif-smallcaps"
       android:text="Reiniciar"
