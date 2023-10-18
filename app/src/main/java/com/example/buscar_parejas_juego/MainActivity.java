@@ -8,6 +8,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -36,10 +37,13 @@ public class MainActivity extends AppCompatActivity {
         uploadPreferences();
 
         jugar = (Button) findViewById(R.id.Btnjugar);
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.click);
 
         jugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mediaPlayer.start();
+
                 SharedPreferences guardarNamePlayer = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = guardarNamePlayer.edit();
 
@@ -65,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         dialog.dismiss();
-                        startActivity(new Intent(MainActivity.this, NivelFacil.class)
-                                .putExtra("nameplayer1", nameplayer1).putExtra("nameplayer2", nameplayer2));
+                        mediaPlayer.start();
+                        startActivity(new Intent(MainActivity.this, NivelFacil.class).putExtra("nameplayer1", nameplayer1).putExtra("nameplayer2", nameplayer2));
 
                     }
 
@@ -77,17 +81,18 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         dialog.dismiss();
-                        startActivity(new Intent(MainActivity.this, NivelNormal.class)
-                                .putExtra("nameplayer1", nameplayer1).putExtra("nameplayer2", nameplayer2));
+                        mediaPlayer.start();
+                        startActivity(new Intent(MainActivity.this, NivelNormal.class).putExtra("nameplayer1", nameplayer1).putExtra("nameplayer2", nameplayer2));
                     }
                 });
+
                /*SE INGRESA A EL NIVEL DIFICIL*/
                 dificil.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         dialog.dismiss();
-                        startActivity(new Intent(MainActivity.this, NivelDificil.class)
-                                .putExtra("nameplayer1", nameplayer1).putExtra("nameplayer2", nameplayer2));
+                        mediaPlayer.start();
+                        startActivity(new Intent(MainActivity.this, NivelDificil.class).putExtra("nameplayer1", nameplayer1).putExtra("nameplayer2", nameplayer2));
 
                     }
                 });

@@ -90,21 +90,25 @@ public class NivelDificil extends AppCompatActivity {
 
 
         ImageView level3[] = {carta1, carta2, carta3, carta4,
-                carta5, carta6, carta7, carta8,
-                carta9, carta10, carta11, carta12,
-                carta13, carta14, carta15, carta16};
+                              carta5, carta6, carta7, carta8,
+                              carta9, carta10, carta11, carta12,
+                              carta13, carta14, carta15, carta16};
 
         player1.setText(nameplayer1);
         player2.setText(nameplayer2);
 
         tur = (int) (Math.random() * 2) + 1;
+
         if (tur == 1) {
+
             jugador.setText(nameplayer1);
+
         } else if (tur == 2) {
+
             jugador.setText(nameplayer2);
         }
-        List<Integer> lista = nivel3();
 
+        List<Integer> lista = nivel3();
         for (int i = 0; i < level3.length; i++) {
             level3[i].setImageResource(lista.get(i));
         }
@@ -130,10 +134,7 @@ public class NivelDificil extends AppCompatActivity {
                     validarnivel3(level3, lista, pos, nameplayer1, nameplayer2);
 
                 }
-
-
             });
-
         }
 
         regresar.setOnClickListener(new View.OnClickListener() {
@@ -204,7 +205,7 @@ public class NivelDificil extends AppCompatActivity {
                 new Handler().postDelayed(() -> {
                     animarcartas(carta_1, android.R.color.transparent);
                     animarcartas(carta_2, android.R.color.transparent);
-                }, 1000);
+                }, 500);
                 if (tur == 1) {
                     jugador.setText(inputPlayer1);
                     tur = 2;

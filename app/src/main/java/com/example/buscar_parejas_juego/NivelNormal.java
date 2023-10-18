@@ -190,7 +190,7 @@ public class NivelNormal extends AppCompatActivity {
                 new Handler().postDelayed(() -> {
                     animarcartas(carta_1, android.R.color.transparent);
                     animarcartas(carta_2, android.R.color.transparent);
-                }, 1000);
+                }, 500);
                 if (tur == 1) {
                     jugador.setText(inputPlayer2);
                     tur = 2;

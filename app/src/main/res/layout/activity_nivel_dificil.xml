@@ -249,7 +249,7 @@
         android:id="@+id/play1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="76dp"
         android:fontFamily="sans-serif-smallcaps"
         android:textColor="@color/black"
@@ -258,20 +258,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="jugador" />
-
-    <TextView
-        android:id="@+id/punto1"
-        android:layout_width="41dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="76dp"
-        android:layout_marginTop="108dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="0"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/play2"
@@ -292,13 +278,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="108dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginEnd="65dp"
         android:fontFamily="sans-serif-smallcaps"
         android:text="0"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/punto1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="108dp"
+        android:fontFamily="sans-serif-smallcaps"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
