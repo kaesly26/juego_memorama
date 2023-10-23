@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".nivel_dificil">
+    android:layout_height="match_parent">
 
     <ImageView
         android:id="@+id/imgfondo"
@@ -48,8 +47,6 @@
         android:layout_marginEnd="24dp"
         android:background="#680902"
         app:layout_constraintEnd_toStartOf="@+id/c2"
-        app:layout_constraintHorizontal_bias="0.951"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
@@ -80,8 +77,6 @@
         android:layout_marginEnd="24dp"
         android:background="#680902"
         app:layout_constraintEnd_toStartOf="@+id/c6"
-        app:layout_constraintHorizontal_bias="0.973"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/c1" />
 
     <ImageView
@@ -117,8 +112,6 @@
         android:background="#680902"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/c14"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/c9"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -130,8 +123,6 @@
         android:layout_marginEnd="24dp"
         android:background="#680902"
         app:layout_constraintEnd_toStartOf="@+id/c10"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/c5" />
 
     <ImageView
@@ -156,13 +147,13 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="145dp"
-        android:layout_height="233dp"
-        android:layout_marginStart="272dp"
+        android:layout_width="217dp"
+        android:layout_height="224dp"
+        android:layout_marginStart="196dp"
         android:layout_marginTop="60dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/c16"
-        app:srcCompat="@drawable/img_2" />
+        app:srcCompat="@drawable/calci" />
 
     <ImageView
         android:id="@+id/c11"
@@ -189,7 +180,7 @@
         android:layout_width="120dp"
         android:layout_height="50dp"
         android:layout_marginStart="150dp"
-        android:layout_marginBottom="116dp"
+        android:layout_marginBottom="128dp"
         android:backgroundTint="#680902"
         android:fontFamily="sans-serif-smallcaps"
         android:text="Reiniciar"
@@ -304,9 +295,9 @@
     <ImageButton
         android:id="@+id/iDsalir"
         android:layout_width="50dp"
-        android:layout_height="45dp"
+        android:layout_height="48dp"
         android:layout_marginStart="65dp"
-        android:layout_marginBottom="116dp"
+        android:layout_marginBottom="128dp"
         android:background="#F6F1F1"
         android:backgroundTint="#680902"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -3,6 +3,7 @@ package com.example.buscar_parejas_juego;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -51,6 +52,8 @@ public class NivelNormal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nivel_normal);
 
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.click);
+
         player1 = (TextView) findViewById(R.id.namejugador1);
         player2 = (TextView) findViewById(R.id.namejugador2);
 
@@ -76,7 +79,7 @@ public class NivelNormal extends AppCompatActivity {
         String nameplayer1= getIntent().getStringExtra("nameplayer1");
         String nameplayer2= getIntent().getStringExtra("nameplayer2");
 
-        ImageView level2[] = {carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8, carta9, carta10, carta11, carta12};
+        ImageView[] level2 = {carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8, carta9, carta10, carta11, carta12};
 
         player1.setText(nameplayer1);
         player2.setText(nameplayer2);
@@ -124,6 +127,7 @@ public class NivelNormal extends AppCompatActivity {
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mediaPlayer.start();
                 startActivity(new Intent(NivelNormal.this, MainActivity.class));
 
             }
@@ -131,6 +135,7 @@ public class NivelNormal extends AppCompatActivity {
         reiniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mediaPlayer.start();
                 startActivity(new Intent(NivelNormal.this, NivelNormal.class).putExtra("nameplayer1",nameplayer1).putExtra("nameplayer2",nameplayer2));
                 NivelNormal.this.finish();
             }
@@ -155,7 +160,7 @@ public class NivelNormal extends AppCompatActivity {
 
     private List<Integer> nivel2() {
 
-        int imags[] = {R.drawable.mei, R.drawable.espantapajaros, R.drawable.totoro,
+        int[] imags = {R.drawable.mei, R.drawable.espantapajaros, R.drawable.totoro,
                 R.drawable.howl, R.drawable.cositablanca, R.drawable.cositaazul};
         List<Integer> lista = new ArrayList<Integer>();
         while (lista.size() < 12) {
@@ -175,7 +180,7 @@ public class NivelNormal extends AppCompatActivity {
         }
         return lista;
     }
-    private List<Integer> validarnivel2(ImageView[] level2, List<Integer> lista, int pos, String inputPlayer1, String inputPlayer2) {
+    private void validarnivel2(ImageView[] level2, List<Integer> lista, int pos, String inputPlayer1, String inputPlayer2) {
 
         if (!cartas) {
             carta_1 = level2[pos];
@@ -231,7 +236,6 @@ public class NivelNormal extends AppCompatActivity {
 
             }
         }
-        return lista;
     }
 
 }

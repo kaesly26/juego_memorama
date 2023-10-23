@@ -27,7 +27,7 @@
         android:fontFamily="sans-serif-smallcaps"
         android:text="nivel: facil"
         android:textAlignment="center"
-        android:textColor="#054750"
+        android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -117,8 +117,8 @@
 
     <TextView
         android:id="@+id/turno"
-        android:layout_width="130dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:fontFamily="sans-serif-smallcaps"
         android:textAlignment="center"
@@ -133,9 +133,9 @@
 
     <TextView
         android:id="@+id/player1"
-        android:layout_width="130dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="150dp"
         android:fontFamily="sans-serif-smallcaps"
         android:textAlignment="center"
@@ -148,8 +148,8 @@
 
     <TextView
         android:id="@+id/player2"
-        android:layout_width="130dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="sans-serif-smallcaps"
@@ -218,7 +218,7 @@
         android:id="@+id/puntos1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="67dp"
+        android:layout_marginStart="64dp"
         android:layout_marginTop="20dp"
         android:text="0"
         android:textColor="@color/white"

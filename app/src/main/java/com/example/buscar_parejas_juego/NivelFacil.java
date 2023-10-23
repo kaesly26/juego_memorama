@@ -3,6 +3,7 @@ package com.example.buscar_parejas_juego;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -49,6 +50,7 @@ public class NivelFacil extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nivelfacil);
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.click);
 
         player1 = (TextView) findViewById(R.id.player1);
         player2 = (TextView) findViewById(R.id.player2);
@@ -73,7 +75,7 @@ public class NivelFacil extends AppCompatActivity {
         String nameplayer2 = getIntent().getStringExtra("nameplayer2");
 
 
-        ImageView imagview[] = {carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8};
+        ImageView[] imagview = {carta1, carta2, carta3, carta4, carta5, carta6, carta7, carta8};
 
         player1.setText(nameplayer1);
         player2.setText(nameplayer2);
@@ -94,12 +96,9 @@ public class NivelFacil extends AppCompatActivity {
             imagview[i].setImageResource(lista.get(i));
 
         }
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < imagview.length; i++) {
-                    imagview[i].setImageResource(android.R.color.transparent);
-                }
+        new Handler().postDelayed(() -> {
+            for (int i = 0; i < imagview.length; i++) {
+                imagview[i].setImageResource(android.R.color.transparent);
             }
         }, 1000);
 
@@ -119,12 +118,14 @@ public class NivelFacil extends AppCompatActivity {
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mediaPlayer.start();
                 startActivity(new Intent(NivelFacil.this, MainActivity.class));
             }
         });
         reiniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer.start();
                 startActivity(new Intent(NivelFacil.this, NivelFacil.class).putExtra("nameplayer1",nameplayer1).putExtra("nameplayer2",nameplayer2));
                 NivelFacil.this.finish();
             }
@@ -166,7 +167,6 @@ public class NivelFacil extends AppCompatActivity {
         return lista;
     }
     public List<Integer> validar(ImageView[] imagview, List<Integer> lista, int pos, String namePlayer1, String namePlayer2) {
-
         if (!cartas) {
             carta_1 = imagview[pos];
             imgcarta1 = lista.get(pos);

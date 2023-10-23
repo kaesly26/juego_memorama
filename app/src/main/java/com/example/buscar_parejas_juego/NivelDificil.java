@@ -3,6 +3,7 @@ package com.example.buscar_parejas_juego;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -58,6 +59,8 @@ public class NivelDificil extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nivel_dificil);
 
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.click);
+
         player1 = (TextView) findViewById(R.id.play1);
         player2 = (TextView) findViewById(R.id.play2);
 
@@ -89,7 +92,7 @@ public class NivelDificil extends AppCompatActivity {
         String nameplayer2 = getIntent().getStringExtra("nameplayer2");
 
 
-        ImageView level3[] = {carta1, carta2, carta3, carta4,
+        ImageView[] level3 = {carta1, carta2, carta3, carta4,
                               carta5, carta6, carta7, carta8,
                               carta9, carta10, carta11, carta12,
                               carta13, carta14, carta15, carta16};
@@ -140,6 +143,7 @@ public class NivelDificil extends AppCompatActivity {
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mediaPlayer.start();
                 startActivity(new Intent(NivelDificil.this, MainActivity.class));
 
             }
@@ -147,6 +151,7 @@ public class NivelDificil extends AppCompatActivity {
         reiniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer.start();
                 startActivity(new Intent(NivelDificil.this, NivelDificil.class).putExtra("nameplayer1",nameplayer1).putExtra("nameplayer2",nameplayer2));
                 NivelDificil.this.finish();
             }
@@ -169,7 +174,7 @@ public class NivelDificil extends AppCompatActivity {
     }
 
     private List<Integer> nivel3() {
-        int img[] = {R.drawable.arriety, R.drawable.princesa, R.drawable.chico,
+        int[] img = {R.drawable.arriety, R.drawable.princesa, R.drawable.chico,
                 R.drawable.kiki, R.drawable.haru, R.drawable.marnie,
                 R.drawable.castillo, R.drawable.nausicaa};
         ArrayList<Integer> lista = new ArrayList<Integer>();
@@ -246,10 +251,7 @@ public class NivelDificil extends AppCompatActivity {
 
             }
         }
-
         return lista;
     }
-
-
 
 }
