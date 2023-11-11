@@ -52,7 +52,6 @@ public class NivelNormal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nivel_normal);
 
-        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.click);
 
         player1 = (TextView) findViewById(R.id.namejugador1);
         player2 = (TextView) findViewById(R.id.namejugador2);
@@ -116,6 +115,7 @@ public class NivelNormal extends AppCompatActivity {
             level2[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    mediaplayer();
                     animarcartas(level2[pos], lista.get(pos));
                     validarnivel2(level2, lista, pos, nameplayer1, nameplayer2);
 
@@ -127,7 +127,7 @@ public class NivelNormal extends AppCompatActivity {
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mediaPlayer.start();
+                mediaplayer();
                 startActivity(new Intent(NivelNormal.this, MainActivity.class));
 
             }
@@ -135,7 +135,7 @@ public class NivelNormal extends AppCompatActivity {
         reiniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mediaPlayer.start();
+                mediaplayer();
                 startActivity(new Intent(NivelNormal.this, NivelNormal.class).putExtra("nameplayer1",nameplayer1).putExtra("nameplayer2",nameplayer2));
                 NivelNormal.this.finish();
             }
@@ -236,6 +236,10 @@ public class NivelNormal extends AppCompatActivity {
 
             }
         }
+    }
+    private void mediaplayer(){
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.click);
+        mediaPlayer.start();
     }
 
 }

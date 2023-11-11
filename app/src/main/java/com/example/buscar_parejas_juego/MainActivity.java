@@ -27,13 +27,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.click);
-
         jugar = (Button) findViewById(R.id.Btnjugar);
 
         uploadPreferences();
         jugar.setOnClickListener(view -> {
-            mediaPlayer.start();
+            mediaplayer();
             SharedPreferences guardarNamePlayer = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = guardarNamePlayer.edit();
 
@@ -58,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
             /* SE INGRESA A EL NIVEL FACIL*/
             facil.setOnClickListener(view1 -> {
                 dialog.dismiss();
-                mediaPlayer.start();
+                mediaplayer();
                 startActivity(new Intent(MainActivity.this, NivelFacil.class).putExtra("nameplayer1", nameplayer1).putExtra("nameplayer2", nameplayer2));
 
             });
@@ -66,14 +64,14 @@ public class MainActivity extends AppCompatActivity {
             /*SE INGRESA A EL NIVEL NORMAL*/
             normal.setOnClickListener(view12 -> {
                 dialog.dismiss();
-                mediaPlayer.start();
+                mediaplayer();
                 startActivity(new Intent(MainActivity.this, NivelNormal.class).putExtra("nameplayer1", nameplayer1).putExtra("nameplayer2", nameplayer2));
             });
 
            /*SE INGRESA A EL NIVEL DIFICIL*/
             dificil.setOnClickListener(view13 -> {
                 dialog.dismiss();
-                mediaPlayer.start();
+                mediaplayer();
                 startActivity(new Intent(MainActivity.this, NivelDificil.class).putExtra("nameplayer1", nameplayer1).putExtra("nameplayer2", nameplayer2));
 
             });
@@ -92,7 +90,10 @@ public class MainActivity extends AppCompatActivity {
         inputPlayer2.setText(namePlayerTwo);
     }
 
-
+   public void mediaplayer(){
+       final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.click);
+       mediaPlayer.start();
+   }
 
 
 }

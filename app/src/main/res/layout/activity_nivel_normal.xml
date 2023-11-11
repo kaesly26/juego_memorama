@@ -129,6 +129,7 @@
       android:layout_marginTop="248dp"
       android:layout_marginEnd="24dp"
       android:background="#187C1C"
+      android:rotationY="180"
       app:layout_constraintEnd_toStartOf="@+id/ncarta2"
       app:layout_constraintHorizontal_bias="0.357"
       app:layout_constraintStart_toStartOf="parent"

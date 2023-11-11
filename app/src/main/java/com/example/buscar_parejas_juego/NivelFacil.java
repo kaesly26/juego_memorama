@@ -50,7 +50,7 @@ public class NivelFacil extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nivelfacil);
-        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.click);
+
 
         player1 = (TextView) findViewById(R.id.player1);
         player2 = (TextView) findViewById(R.id.player2);
@@ -93,11 +93,14 @@ public class NivelFacil extends AppCompatActivity {
 
         List<Integer> lista = aleatorio();
         for (int i = 0; i < imagview.length; i++) {
+
             imagview[i].setImageResource(lista.get(i));
 
         }
+
         new Handler().postDelayed(() -> {
             for (int i = 0; i < imagview.length; i++) {
+
                 imagview[i].setImageResource(android.R.color.transparent);
             }
         }, 1000);
@@ -109,37 +112,42 @@ public class NivelFacil extends AppCompatActivity {
             imagview[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    mediaplayer();
                     animarcartas(imagview[pos], lista.get(pos));
                     validar(imagview, lista, pos, nameplayer1, nameplayer2);
+                    Log.e("test", imagview[pos] + " la img de las carta de nivel 1");
+
                 }
             });
         }
 
+
+
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mediaPlayer.start();
+                mediaplayer();
                 startActivity(new Intent(NivelFacil.this, MainActivity.class));
             }
         });
         reiniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaPlayer.start();
+                mediaplayer();
                 startActivity(new Intent(NivelFacil.this, NivelFacil.class).putExtra("nameplayer1",nameplayer1).putExtra("nameplayer2",nameplayer2));
                 NivelFacil.this.finish();
             }
         });
     }
     private void animarcartas(ImageView img, int image) {
-        ViewPropertyAnimator animator = img.animate().withLayer().rotationY(90).setDuration(50);
+        ViewPropertyAnimator animator = img.animate().withLayer().rotationY(90).setDuration(45);
         animator.setListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
                 if (img.getRotationY() == 90) {
                     img.setImageResource(image);
-                    img.animate().rotationY(0).setDuration(50).setListener(null);
+                    img.animate().rotationY(0).setDuration(45).setListener(null);
                 }
             }
         });
@@ -147,7 +155,7 @@ public class NivelFacil extends AppCompatActivity {
     }
     private List<Integer> aleatorio() {
 
-        int imgs[] = {R.drawable.ponyo, R.drawable.papaponyo, R.drawable.bigwoman, R.drawable.saske};
+        int[] imgs = {R.drawable.ponyo, R.drawable.papaponyo, R.drawable.bigwoman, R.drawable.saske};
         ArrayList<Integer> lista = new ArrayList<Integer>();
         while (lista.size() < 8) {
             int imgAleatoria = imgs[(int) (Math.random() * 4)];
@@ -212,7 +220,7 @@ public class NivelFacil extends AppCompatActivity {
                     int puntosActuales = Integer.parseInt(puntos2.getText().toString());
                     puntosActuales = puntosActuales + 100;
                     puntos2.setText(puntosActuales + "");
-                    Log.e("test", puntosActuales + " puntos 2");
+
 
                 }
                 carta_1.setEnabled(false);
@@ -222,5 +230,9 @@ public class NivelFacil extends AppCompatActivity {
             }
         }
         return lista;
+    }
+    private void mediaplayer(){
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.click);
+        mediaPlayer.start();
     }
 }

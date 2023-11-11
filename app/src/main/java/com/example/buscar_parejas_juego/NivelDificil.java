@@ -133,6 +133,7 @@ public class NivelDificil extends AppCompatActivity {
             level3[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    mediaplayer();
                     animarcartas(level3[pos], lista.get(pos));
                     validarnivel3(level3, lista, pos, nameplayer1, nameplayer2);
 
@@ -143,7 +144,7 @@ public class NivelDificil extends AppCompatActivity {
         regresar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mediaPlayer.start();
+                mediaplayer();
                 startActivity(new Intent(NivelDificil.this, MainActivity.class));
 
             }
@@ -151,7 +152,7 @@ public class NivelDificil extends AppCompatActivity {
         reiniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mediaPlayer.start();
+                mediaplayer();
                 startActivity(new Intent(NivelDificil.this, NivelDificil.class).putExtra("nameplayer1",nameplayer1).putExtra("nameplayer2",nameplayer2));
                 NivelDificil.this.finish();
             }
@@ -252,6 +253,10 @@ public class NivelDificil extends AppCompatActivity {
             }
         }
         return lista;
+    }
+    private void mediaplayer(){
+        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.click);
+        mediaPlayer.start();
     }
 
 }
