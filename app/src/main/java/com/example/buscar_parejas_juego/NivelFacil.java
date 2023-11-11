@@ -2,6 +2,7 @@ package com.example.buscar_parejas_juego;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -45,6 +46,7 @@ public class NivelFacil extends AppCompatActivity {
     // contadores de puntos
     TextView puntos1;
     TextView puntos2;
+    int suma = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -211,21 +213,32 @@ public class NivelFacil extends AppCompatActivity {
                 }
             } else {
                 // sumar puntos
-                if (tur == 1) {
+               if (tur == 1) {
                     int puntosActuales = Integer.parseInt(puntos1.getText().toString());
                     puntosActuales = puntosActuales + 100;
                     puntos1.setText(puntosActuales + "");
                     Log.e("test", puntosActuales + " puntos 1");
-                } else if (tur == 2) {
+
+               } else if (tur == 2) {
                     int puntosActuales = Integer.parseInt(puntos2.getText().toString());
                     puntosActuales = puntosActuales + 100;
-                    puntos2.setText(puntosActuales + "");
+                   puntos2.setText(puntosActuales + "");
+                   Log.e("test", puntosActuales + " puntos 2");
+               }
 
 
-                }
+
                 carta_1.setEnabled(false);
                 carta_2.setEnabled(false);
 
+                suma++;
+                Log.e("test", suma + " suma ");
+                if(suma== 4){
+                    Dialog dialog = new Dialog(NivelFacil.this);
+                    dialog.setContentView(R.layout.winner);
+                    dialog.show();
+                    Log.e("test", suma + " se hicieron todos los pares ");
+                }
 
             }
         }

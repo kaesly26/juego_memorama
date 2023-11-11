@@ -1,14 +1,14 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools" >
     <!-- Base application theme. -->
 
     <style name="Base.Theme.Buscar_parejas_juego" parent="Theme.Material3.DayNight.NoActionBar">
 
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">#00BCD5</item>
-        <item name="android:windowSplashScreenBackground" tools:targetApi="s">#4EBAAA</item>
-        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">@drawable/vistainicio</item>
-        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="s">2000</item>
-        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="s">#4EBAAA</item>
+        <item name="android:windowSplashScreenBackground" tools:ignore="NewApi">#C3DCD8</item>
+        <item name="android:windowSplashScreenAnimatedIcon" tools:ignore="NewApi">@drawable/vistainicio</item>
+        <item name="android:windowSplashScreenAnimationDuration" tools:ignore="NewApi">2000</item>
+        <item name="android:statusBarColor" tools:ignore="NewApi">#26D0E6</item>
     </style>
 
     <style name="Theme.Buscar_parejas_juego" parent="Base.Theme.Buscar_parejas_juego" />
