@@ -100,10 +100,12 @@ public class NivelFacil extends AppCompatActivity {
 
         }
 
-        new Handler().postDelayed(() -> {
-            for (int i = 0; i < imagview.length; i++) {
-
-                imagview[i].setImageResource(android.R.color.transparent);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i < imagview.length; i++) {
+                    imagview[i].setImageResource(android.R.color.transparent);
+                }
             }
         }, 1000);
 
@@ -219,6 +221,7 @@ public class NivelFacil extends AppCompatActivity {
                     puntos1.setText(puntosActuales + "");
                     Log.e("test", puntosActuales + " puntos 1");
 
+
                } else if (tur == 2) {
                     int puntosActuales = Integer.parseInt(puntos2.getText().toString());
                     puntosActuales = puntosActuales + 100;
@@ -227,18 +230,31 @@ public class NivelFacil extends AppCompatActivity {
                }
 
 
-
                 carta_1.setEnabled(false);
                 carta_2.setEnabled(false);
 
                 suma++;
                 Log.e("test", suma + " suma ");
                 if(suma== 4){
+
                     Dialog dialog = new Dialog(NivelFacil.this);
                     dialog.setContentView(R.layout.winner);
                     dialog.show();
+                    TextView nameganador= (TextView)findViewById(R.id.id_ganador);
+
+
+
                     Log.e("test", suma + " se hicieron todos los pares ");
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            dialog.dismiss();
+                            startActivity(new Intent(NivelFacil.this,puntajes.class));
+                        }
+                    }, 5000);
+
                 }
+
 
             }
         }

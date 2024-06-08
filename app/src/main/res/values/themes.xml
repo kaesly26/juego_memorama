@@ -5,9 +5,9 @@
 
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">#00BCD5</item>
-        <item name="android:windowSplashScreenBackground" tools:ignore="NewApi">#C3DCD8</item>
+        <item name="android:windowSplashScreenBackground" tools:ignore="NewApi">#D6EAF8</item>
         <item name="android:windowSplashScreenAnimatedIcon" tools:ignore="NewApi">@drawable/vistainicio</item>
-        <item name="android:windowSplashScreenAnimationDuration" tools:ignore="NewApi">2000</item>
+        <item name="android:windowSplashScreenAnimationDuration" tools:ignore="NewApi">1000</item>
         <item name="android:statusBarColor" tools:ignore="NewApi">#26D0E6</item>
     </style>
 
