@@ -2,13 +2,13 @@ package com.example.buscar_parejas_juego;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
-import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -100,12 +100,9 @@ public class NivelFacil extends AppCompatActivity {
 
         }
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < imagview.length; i++) {
-                    imagview[i].setImageResource(android.R.color.transparent);
-                }
+        new Handler().postDelayed(() -> {
+            for (ImageView imageView : imagview) {
+                imageView.setImageResource(android.R.color.transparent);
             }
         }, 1000);
 
@@ -113,37 +110,29 @@ public class NivelFacil extends AppCompatActivity {
         for (int i = 0; i < imagview.length; i++) {
             final int pos = i;
 
-            imagview[i].setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    mediaplayer();
-                    animarcartas(imagview[pos], lista.get(pos));
-                    validar(imagview, lista, pos, nameplayer1, nameplayer2);
-                    Log.e("test", imagview[pos] + " la img de las carta de nivel 1");
+            imagview[i].setOnClickListener(v -> {
+                mediaplayer();
+                animarcartas(imagview[pos], lista.get(pos));
+                validar(imagview, lista, pos, nameplayer1, nameplayer2);
+                Log.e("test", imagview[pos] + " la img de las carta de nivel 1");
 
-                }
             });
         }
 
 
 
-        regresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mediaplayer();
-                startActivity(new Intent(NivelFacil.this, MainActivity.class));
-            }
+        regresar.setOnClickListener(view -> {
+            mediaplayer();
+            startActivity(new Intent(NivelFacil.this, MainActivity.class));
         });
-        reiniciar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mediaplayer();
-                startActivity(new Intent(NivelFacil.this, NivelFacil.class).putExtra("nameplayer1",nameplayer1).putExtra("nameplayer2",nameplayer2));
-                NivelFacil.this.finish();
-            }
+        reiniciar.setOnClickListener(v -> {
+            mediaplayer();
+            startActivity(new Intent(NivelFacil.this, NivelFacil.class).putExtra("nameplayer1",nameplayer1).putExtra("nameplayer2",nameplayer2));
+            NivelFacil.this.finish();
         });
+
     }
-    private void animarcartas(ImageView img, int image) {
+    private void  animarcartas(ImageView img, int image) {
         ViewPropertyAnimator animator = img.animate().withLayer().rotationY(90).setDuration(45);
         animator.setListener(new AnimatorListenerAdapter() {
             @Override
@@ -160,7 +149,7 @@ public class NivelFacil extends AppCompatActivity {
     private List<Integer> aleatorio() {
 
         int[] imgs = {R.drawable.ponyo, R.drawable.papaponyo, R.drawable.bigwoman, R.drawable.saske};
-        ArrayList<Integer> lista = new ArrayList<Integer>();
+        ArrayList<Integer> lista = new ArrayList<>();
         while (lista.size() < 8) {
             int imgAleatoria = imgs[(int) (Math.random() * 4)];
             int cont = 0;
@@ -178,7 +167,8 @@ public class NivelFacil extends AppCompatActivity {
         }
         return lista;
     }
-    public List<Integer> validar(ImageView[] imagview, List<Integer> lista, int pos, String namePlayer1, String namePlayer2) {
+    @SuppressLint("SetTextI18n")
+    public void validar(ImageView[] imagview, List<Integer> lista, int pos, String namePlayer1, String namePlayer2) {
         if (!cartas) {
             carta_1 = imagview[pos];
             imgcarta1 = lista.get(pos);
@@ -235,30 +225,45 @@ public class NivelFacil extends AppCompatActivity {
 
                 suma++;
                 Log.e("test", suma + " suma ");
-                if(suma== 4){
-
+                if (suma == 4) {
                     Dialog dialog = new Dialog(NivelFacil.this);
                     dialog.setContentView(R.layout.winner);
                     dialog.show();
-                    TextView nameganador= (TextView)findViewById(R.id.id_ganador);
 
+                    TextView nameganador = (TextView) dialog.findViewById(R.id.id_ganador);
+                    TextView puntuacionMaxima = (TextView) dialog.findViewById(R.id.id_puntos);
+                    String nameplayer1 = getIntent().getStringExtra("nameplayer1");
+                    String nameplayer2 = getIntent().getStringExtra("nameplayer2");
+
+                    int puntosJugador1 = Integer.parseInt(puntos1.getText().toString());
+                    int puntosJugador2 = Integer.parseInt(puntos2.getText().toString());
+
+                    String ganadorNombre;
+
+                    if (puntosJugador1 > puntosJugador2) {
+                        ganadorNombre = nameplayer1 + " es el ganador!";
+                        puntuacionMaxima.setText(String.valueOf(puntosJugador1));
+                    } else if (puntosJugador2 > puntosJugador1) {
+                        ganadorNombre = nameplayer2 + " es el ganador!";
+                        puntuacionMaxima.setText(String.valueOf(puntosJugador2));
+                    } else {
+                        ganadorNombre = "¡Es un empate!";
+                    }
+
+                    nameganador.setText(ganadorNombre);
 
 
                     Log.e("test", suma + " se hicieron todos los pares ");
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            dialog.dismiss();
-                            startActivity(new Intent(NivelFacil.this,puntajes.class));
-                        }
+                    new Handler().postDelayed(() -> {
+                        dialog.dismiss();
+                        startActivity(new Intent(NivelFacil.this, puntajes.class));
                     }, 5000);
-
                 }
+
 
 
             }
         }
-        return lista;
     }
     private void mediaplayer(){
         final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.click);
